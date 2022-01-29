@@ -11,7 +11,7 @@ class Solution:
         """
 
         # count consecutive adjacent swaps during the insertion sort
-        adj_swap_only = 0
+        adj_swap = 0
     
         for i in range(len(nums)):
             j = i
@@ -19,18 +19,16 @@ class Solution:
                 if nums[j] < nums[j-1]:
                     nums[j], nums[j-1] = nums[j-1], nums[j]
                     if j == i:
-                        adj_swap_only += 1
-                    else:
-                        adj_swap_only = 0
+                        adj_swap += 1
 
-                    if adj_swap_only > 1 or i-j > 0:
+                    if adj_swap > 1 or i-j > 0:
                         return False
-                    
+
                     j-=1
                     
                 else:
                     if j == i:
-                        adj_swap_only = 0
+                        adj_swap = 0
                     break
                     
         return True
